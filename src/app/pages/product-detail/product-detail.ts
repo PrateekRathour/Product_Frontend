@@ -83,17 +83,17 @@ import { Product } from '../../models/catalog.model';
               <div class="text-xs text-slate-400 font-medium mb-1">Catalog Unit Price</div>
               <div class="flex items-baseline gap-3">
                 <span class="text-3xl font-black text-white price-tag">
-                  \${{ (product()?.discountPrice || product()?.price) | number:'1.2-2' }}
+                  ₹{{ (product()?.discountPrice || product()?.price) | number:'1.2-2' }}
                 </span>
                 <span *ngIf="product()?.discountPrice" class="text-base text-slate-500 line-through price-tag">
-                  \${{ product()?.price | number:'1.2-2' }}
+                  ₹{{ product()?.price | number:'1.2-2' }}
                 </span>
               </div>
             </div>
 
             <div *ngIf="product()?.discountPrice" class="text-right">
               <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                Save \${{ ((product()?.price || 0) - (product()?.discountPrice || 0)) | number:'1.2-2' }}
+                Save ₹{{ ((product()?.price || 0) - (product()?.discountPrice || 0)) | number:'1.2-2' }}
               </span>
             </div>
           </div>

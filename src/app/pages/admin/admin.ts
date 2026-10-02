@@ -46,7 +46,7 @@ import { DashboardStats } from '../../models/dashboard.model';
         <div class="glass-card p-6 border-indigo-500/30 space-y-2 relative overflow-hidden">
           <div class="text-xs font-bold text-indigo-400 uppercase tracking-wider">Total Inventory Value</div>
           <div class="text-3xl font-black font-mono text-white">
-            \${{ (stats()?.totalInventoryValue || 0) | number:'1.2-2' }}
+            ₹{{ (stats()?.totalInventoryValue || 0) | number:'1.2-2' }}
           </div>
           <div class="text-[11px] text-slate-400">Calculated across active stock</div>
           <div class="absolute -right-4 -bottom-4 w-20 h-20 bg-indigo-500/10 rounded-full blur-xl pointer-events-none"></div>
@@ -98,7 +98,7 @@ import { DashboardStats } from '../../models/dashboard.model';
             <div *ngFor="let cat of stats()?.categoryDistribution" class="space-y-1.5">
               <div class="flex items-center justify-between text-xs">
                 <span class="font-semibold text-slate-200">{{ cat.categoryName }} ({{ cat.productCount }} SKUs)</span>
-                <span class="font-mono text-indigo-300 font-bold">\${{ cat.inventoryValuation | number:'1.2-2' }}</span>
+                <span class="font-mono text-indigo-300 font-bold">₹{{ cat.inventoryValuation | number:'1.2-2' }}</span>
               </div>
               <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
                 <div class="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 rounded-full"
@@ -178,7 +178,7 @@ import { DashboardStats } from '../../models/dashboard.model';
                 </td>
                 <td>
                   <span class="font-mono font-bold text-white text-xs">
-                    \${{ (p.discountPrice || p.price) | number:'1.2-2' }}
+                    ₹{{ (p.discountPrice || p.price) | number:'1.2-2' }}
                   </span>
                 </td>
                 <td>
@@ -255,14 +255,14 @@ import { DashboardStats } from '../../models/dashboard.model';
               </div>
 
               <div>
-                <label class="label-control">Base Price (\$) *</label>
+                <label class="label-control">Base Price (₹) *</label>
                 <input type="number" step="0.01" [(ngModel)]="prodForm.price" name="price" required class="input-control" placeholder="999.00">
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label class="label-control">Discount Price (\$)</label>
+                <label class="label-control">Discount Price (₹)</label>
                 <input type="number" step="0.01" [(ngModel)]="prodForm.discountPrice" name="discountPrice" class="input-control" placeholder="Leave blank if none">
               </div>
 

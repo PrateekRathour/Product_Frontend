@@ -131,13 +131,13 @@ import { Category, InventoryStatus, Product, ProductFilter } from '../../models/
             <div>
               <div class="flex justify-between items-center mb-1">
                 <label class="label-control mb-0">Max Price</label>
-                <span class="text-xs font-mono text-indigo-300 font-bold">\${{ maxPriceLimit }}</span>
+                <span class="text-xs font-mono text-indigo-300 font-bold">₹{{ maxPriceLimit | number:'1.0-0' }}</span>
               </div>
-              <input type="range" min="100" max="5000" step="50" [(ngModel)]="maxPriceLimit" (change)="applyFilters()"
+              <input type="range" min="1000" max="500000" step="5000" [(ngModel)]="maxPriceLimit" (change)="applyFilters()"
                      class="w-full accent-indigo-500 cursor-pointer">
               <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
-                <span>\$100</span>
-                <span>\$5,000+</span>
+                <span>₹1,000</span>
+                <span>₹5,00,000+</span>
               </div>
             </div>
 
@@ -299,10 +299,10 @@ import { Category, InventoryStatus, Product, ProductFilter } from '../../models/
                   <div>
                     <div class="flex items-baseline gap-2">
                       <span class="text-xl font-extrabold text-white price-tag">
-                        \${{ (product.discountPrice || product.price) | number:'1.2-2' }}
+                        ₹{{ (product.discountPrice || product.price) | number:'1.2-2' }}
                       </span>
                       <span *ngIf="product.discountPrice" class="text-xs text-slate-500 line-through price-tag">
-                        \${{ product.price | number:'1.2-2' }}
+                        ₹{{ product.price | number:'1.2-2' }}
                       </span>
                     </div>
                   </div>
@@ -355,10 +355,10 @@ import { Category, InventoryStatus, Product, ProductFilter } from '../../models/
               <div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-4 shrink-0 sm:border-l sm:border-slate-800 sm:pl-6">
                 <div class="text-right">
                   <div class="text-2xl font-black text-white price-tag">
-                    \${{ (product.discountPrice || product.price) | number:'1.2-2' }}
+                    ₹{{ (product.discountPrice || product.price) | number:'1.2-2' }}
                   </div>
                   <div *ngIf="product.discountPrice" class="text-xs text-slate-500 line-through price-tag">
-                    \${{ product.price | number:'1.2-2' }}
+                    ₹{{ product.price | number:'1.2-2' }}
                   </div>
                 </div>
 
@@ -408,7 +408,7 @@ export class CatalogComponent implements OnInit {
   filterKeyword = '';
   selectedCategoryId: number | null = null;
   filterStatus: InventoryStatus | null = null;
-  maxPriceLimit = 5000;
+  maxPriceLimit = 500000;
   featuredOnly = false;
   includeInactive = false;
   sortByOption = 'id_desc';
