@@ -187,23 +187,30 @@ import { DashboardStats } from '../../models/dashboard.model';
                   </span>
                 </td>
                 <td>
-                  <span *ngIf="p.inventory?.status === 'IN_STOCK'" class="badge badge-in-stock text-[9px]">In Stock</span>
-                  <span *ngIf="p.inventory?.status === 'LOW_STOCK'" class="badge badge-low-stock text-[9px]">Low</span>
-                  <span *ngIf="p.inventory?.status === 'OUT_OF_STOCK'" class="badge badge-out-of-stock text-[9px]">Out</span>
+                  <span *ngIf="p.inventory?.status === 'IN_STOCK'" class="badge-stock-pill badge-stock-in text-[10px]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> In Stock
+                  </span>
+                  <span *ngIf="p.inventory?.status === 'LOW_STOCK'" class="badge-stock-pill badge-stock-low text-[10px] animate-pulse">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Low Stock
+                  </span>
+                  <span *ngIf="p.inventory?.status === 'OUT_OF_STOCK'" class="badge-stock-pill badge-stock-out text-[10px]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span> Depleted
+                  </span>
                 </td>
                 <td>
                   <button (click)="toggleActive(p)" [title]="p.active ? 'Click to deactivate' : 'Click to activate'"
-                          class="px-2 py-0.5 rounded text-[10px] font-bold transition-all"
-                          [ngClass]="p.active ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/30' : 'bg-slate-800 text-slate-400'">
+                          class="px-2.5 py-1 rounded-full text-[10px] font-bold transition-all flex items-center gap-1.5"
+                          [ngClass]="p.active ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/30' : 'bg-slate-800 text-slate-400 border border-slate-700/50'">
+                    <span class="w-1.5 h-1.5 rounded-full" [ngClass]="p.active ? 'bg-emerald-400' : 'bg-slate-500'"></span>
                     {{ p.active ? 'Active' : 'Disabled' }}
                   </button>
                 </td>
                 <td class="text-right">
                   <div class="flex items-center justify-end gap-2">
-                    <button (click)="openEditProductModal(p)" class="btn btn-secondary text-xs py-1 px-2.5">
-                      ✏️ Edit
+                    <button (click)="openEditProductModal(p)" class="btn btn-secondary text-xs py-1 px-3 flex items-center gap-1">
+                      <span>✏️</span> <span>Edit</span>
                     </button>
-                    <button *ngIf="authService.isAdmin()" (click)="deleteProduct(p)" class="btn btn-danger text-xs py-1 px-2.5">
+                    <button *ngIf="authService.isAdmin()" (click)="deleteProduct(p)" class="btn btn-danger text-xs py-1 px-2.5" title="Delete product">
                       🗑️
                     </button>
                   </div>
